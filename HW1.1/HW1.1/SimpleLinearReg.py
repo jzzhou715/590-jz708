@@ -33,8 +33,6 @@ class SimpleLinearRegression:
         plt.show()
 
 
-weight = SimpleLinearRegression('/Users/Zhou/Documents/GitHub/590-jz708/HW1.1/HW1.1/weight.json')
+weight = SimpleLinearRegression('weight.json')
 weight.get_coef()
 weight.get_plot()
-
-    

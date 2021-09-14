@@ -34,8 +34,6 @@ class LogReg:
         plt.show()
 
 
-weight = LogReg('/Users/Zhou/Documents/GitHub/590-jz708/HW1.1/HW1.1/weight.json')
+weight = LogReg('weight.json')
 weight.get_coef()
 weight.get_plot()
-
-    
