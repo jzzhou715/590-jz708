@@ -44,8 +44,8 @@ epoch=1; epochs=[]; loss_train=[];  loss_val=[]
 import Seaborn_visualizer as SBV
 
 SBV.get_pd_info(df)
-# SBV.pd_general_plots(df,HUE='Origin')
-# SBV.pandas_2D_plots(df,col_to_plot=[1,4,5],HUE='Origin')
+SBV.pd_general_plots(df,HUE='Origin')
+SBV.pandas_2D_plots(df,col_to_plot=[1,4,5],HUE='Origin')
 
 #----------------------------------------
 #PRE-PROCESS DATA 
