@@ -2,7 +2,7 @@ import keras
 from keras import layers
 import matplotlib.pyplot as plt
 
-from keras.datasets import mnist,cifar10
+from keras.datasets import mnist,cifar10, cifar100
 import numpy as np
 
 from keras import losses
@@ -132,42 +132,42 @@ threshold
 # Anomaly Detection
 # =============================================================================
 
-# from keras.datasets import fashion_mnist 
-# (X, Y), (test_images, test_labels) = fashion_mnist.load_data()
+(x_train, _), (x_test, _) = cifar100.load_data()
+N_channels=3; PIX=32
 
-# X = X.astype('float32') / 255.
-# test_images = test_images.astype('float32') / 255.
+X = x_train.astype('float32') / 255.
+test_images = test_images.astype('float32') / 255.
 
-# #PLOT ORIGINAL AND RECONSTRUCTED 
-# X1=autoencoder.predict(X)
+#PLOT ORIGINAL AND RECONSTRUCTED 
+X1=autoencoder.predict(X)
 
-# X = X.reshape(60000,28*28); 
-# X1 = X1.reshape(60000,28*28); 
+X = X.reshape(50000, 32*32*3); 
+X1 = X1.reshape(50000 ,32*32*3); 
 
-# reconstruction_errors = losses.binary_crossentropy(X, X1)
+reconstruction_errors = losses.binary_crossentropy(X, X1)
 
-# anomaly = pd.Series(reconstruction_errors) > threshold
+anomaly = pd.Series(reconstruction_errors) > threshold
 
-# anom_percentage = len(X[anomaly])/len(X)
+anom_percentage = len(X[anomaly])/len(X)
 
-# with open('HW6.3_log.txt', 'a') as f:
-#     f.write('Anomaly percentage = ')
-#     f.write(str(anom_percentage))
+with open('HW6.3_log.txt', 'a') as f:
+    f.write('Anomaly percentage = ')
+    f.write(str(anom_percentage))
     
-# #RESHAPE
-# X=X.reshape(60000,28,28); #print(X[0])
-# X1=X1.reshape(60000,28,28); #print(X[0])    
+#RESHAPE
+X=X.reshape(50000,32,32,3); #print(X[0])
+X1=X1.reshape(50000,32,32,3); #print(X[0])    
     
-# #COMPARE ORIGINAL 
-# f, ax = plt.subplots(4,1)
-# I1=11; I2=46
-# ax[0].imshow(X[I1])
-# ax[1].imshow(X1[I1])
-# ax[2].imshow(X[I2])
-# ax[3].imshow(X1[I2])
-# plt.savefig('HW6.3_Reconstruct.png') 
-# plt.show()
-# plt.close()
+#COMPARE ORIGINAL 
+f, ax = plt.subplots(4,1)
+I1=11; I2=46
+ax[0].imshow(X[I1])
+ax[1].imshow(X1[I1])
+ax[2].imshow(X[I2])
+ax[3].imshow(X1[I2])
+plt.savefig('HW6.3_Reconstruct.png') 
+plt.show()
+plt.close()
 
 # # #VISUALIZE THE RESULTS
 # # n = 10
